@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio</title>
+    <style>
+      .navbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 15%;
+        z-index: 10;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+
+        background-color: #1C0033;
+        color: var(--cg-white);
+        padding: 0px 0px;
+      }
+      .nav-list {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        right: 30px;
+        list-style: none;
+      }
+      .navbar a {
+        font-family: monospace; 
+        color: var(--cg-white);
+        font-weight: bold;
+        margin: 0 12px;
+        text-decoration: none;
+        letter-spacing: 2px;
+      }
+      .navbar a:hover {
+        color: #FFFFFF; 
+        background-color: #4B0082; 
+        text-decoration: underline; 
+}
+      .nav-list li a {
+        color: white;
+        text-decoration: none;
+      }
+      
+      .portfolio-image {
+        width: 100%;
+        height: 200px; 
+        object-fit: cover; 
+        border-radius: 4px;
+      }
+
+      body {
+        font-family: monospace;
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        padding: 20px;
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-around; 
+        flex-wrap: wrap;
+        gap: 20px; 
+      }
+
+      .project {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 300px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        border: 2px solid #1C0033;
+        padding: 10px;
+        background-color: #fff;
+      }
+      .project-details {
+        max-width: 600px;
+        text-align: center;
+      }
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #f1f1f1;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1 class="logo"><a href="index.html" style="color: white; text-decoration: none;">Back to Homepage</a></h1>
+      <ul class="nav-list">
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Project Portfolio</h1>
+      <div class="project">
+        <a href="index.html">
+          <img src="./images/akpsi.jpeg" alt="My Professional Headshot" class="portfolio-image">
+        </a>
+        <div class="project-details">
+          <p class="project-name">Derrick Phan's Website</p>
+          <p class="project-description">Come learn about me and my experiences by viewing my Website!</p>
+          <a href="index.html">Link to Website</a>
+        </div>
+      </div> 
+      <div class="project">
+        <a href="index.html">
+          <img src="./images/playtranspare_logo.jpeg" alt="Transpare Logo" class="portfolio-image">
+        </a>
+        <div class="project-details">
+          <p class="project-name">Transpare.io</p>
+          <p class="project-description">Transpare.io is a online gaming platform that supports a wide variety of online games and lives sports tracking, the perfect place to chat with others over games and sports!</p>
+          <a href="https://www.linkedin.com/company/playtranspare/posts/?feedView=all">Transpare Linkedin</a>
+        </div>
+      </div>
+      <div class="project">
+        <a href="index.html">
+          <img src="./images/poly.jpg" alt="Polymaps Picture" class="portfolio-image">
+        </a>
+        <div class="project-details">
+          <p class="project-name">Polymaps</p>
+          <p class="project-description">Polymaps is an app that serves as a map that can display all 400+ clubs at Cal Poly. It is aimed to be a tool for students to get integrated with college on campus easier and faster, and we are currently working on communication features for students within the app.</p>
+        </div>
+      </div>
+    </main>
+    <hr>
+    <footer class="footer">© 2024 Derrick Phan | All Rights Reserved</footer>
+  </body>
+</html>

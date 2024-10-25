@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <style>
+        .navbar {
+          position: -webkit-sticky;
+          position: sticky;
+          top: 0;
+          width: 100%;
+          height: 15%;
+          z-index: 10;
+  
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-align: center;
+  
+          background-color: #1C0033;
+          color: var(--cg-white);
+          padding: 0px 0px;
+        }
+        .nav-list {
+          display: flex;
+          flex-direction: row;
+          position: relative;
+          right: 30px;
+          list-style: none;
+        }
+        .navbar a {
+          font-family: monospace; 
+          color: var(--cg-white);
+          font-weight: bold;
+          margin: 0 12px;
+          text-decoration: none;
+          letter-spacing: 2px;
+        }
+        .navbar a:hover {
+          color: #FFFFFF;
+          background-color: #4B0082; 
+          text-decoration: underline; 
+  }
+        .nav-list li a {
+          color: white;
+          text-decoration: none;
+        }
+        
+        .blog-image {
+          display: block;
+          max-width: 100%;
+          height: auto; 
+          object-fit: cover; 
+          border-radius: 8px;
+          margin: 0 auto 20px auto;
+        }
+  
+        body {
+          font-family: monospace;
+          margin: 0;
+          padding: 0;
+        }
+        main {
+          flex: 1;
+          max-width: 800px;
+          margin:40px auto;
+          padding: 0 20px;
+          background-color: #FFFFFF;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+        }
+  
+        .blog {
+          display: block;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          width: 300px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          border: 2px solid #3389f3;
+          padding: 10px;
+          background-color: #fff;
+        }
+        .blog-details {
+          max-width: 600px;
+          text-align: center;
+        }
+        .page-title {
+          width: 100%;
+          margin-bottom: 0;
+        }
+        .sub-header {
+          font-size: 1.25rem;
+          font-family: monospace;
+          color: var(--cg-black);
+          margin-top: 0;
+          margin-bottom: 20px;
+          text-align: center; 
+          word-wrap: break-word; 
+          width: 100%; 
+        }
+        footer {
+          text-align: center;
+          padding: 10px;
+          background-color: #f1f1f1;
+          position: fixed;
+          width: 100%;
+          bottom: 0;
+        }
+      </style>
+    </head>
+    <body>
+      <nav class="navbar">
+        <h1 class="logo"><a href="blog.html" style="color: white; text-decoration: none;">Back to Blogs</a></h1>
+        <ul class="nav-list">
+          <li><a href="../index.html">Homepage</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../portfolio.html">Portfolio</a></li>
+          <li><a href="../resume.html">Resume</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <main>
+        <h1 class="blog-title">Trip to Tahoe</h1>
+        <p class="blog-date">09-14-24</p>
+        <img src="../images/tahoe.jpeg" alt="Picture in Tahoe" class="blog-image">
+        <div class="blog-content">
+          <p>I recently was able to travel on a quick trip to Tahoe with a group of my close friends! We got to swim in the lake, go hiking, play golf, watch football, eat lots of good food, and had a great time all together.</p>
+        </div>
+      </main>
+      <footer class="footer">© 2024 Derrick Phan | All Rights Reserved</footer>
+    </body>
+  </html>
