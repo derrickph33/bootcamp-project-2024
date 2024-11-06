@@ -1,0 +1,67 @@
+  .portfolioImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .projectGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 2px solid #1C0033;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .projectDetails {
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .projectName {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .projectDescription {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 1rem; 
+    color: var(--cg-black);
+    word-wrap: break-word;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .projectDetails a {
+    color: #3389f3; 
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .projectDetails a:hover {
+    color: #4B0082; 
+    text-decoration: underline; 
+  }
+  
