@@ -1,52 +1,53 @@
 import React from 'react';
-import styles from '../components/portfolio.module.css';
-import Image from 'next/image';
+import PortfolioPreview from '../components/portfolioPreview';
+import connectDB from '../database/db';
+import Project from '../database/portfolioSchema'; 
 
-export default function PortfolioPage() {
+async function getProjects() {
+  await connectDB();
+
+  try {
+      const projects = await Project.find().sort({ name: 1 }).orFail();
+      return projects;
+  } catch (err) {
+      return null; 
+  }
+}
+
+export default async function PortfolioPage() {
+  const projects = await getProjects();
+
   return (
     <>
-      <main className="px-5 pt-5 pb-5">
-        <h1 className="text-5xl font-bold text-center mb-5">Project Portfolio</h1>
+      <nav className="navbar">
+        <h1 className="logo">
+          <a href="/" style={{ color: 'white', textDecoration: 'none' }}>Back to Homepage</a>
+        </h1>
+      </nav>
+
+      <main className="px-5 pt-2 pb-5">
+        <h1 className="text-5xl font-bold text-center mb-3">Project Portfolio</h1>
         <h2 className="text-2xl text-center mb-5">Some of the projects I have worked on!</h2>
-
-        <div className={styles.projectGrid}>
-          <div className={styles.project}>
-            <a href="/">
-              <Image src="/images/akpsi.jpeg" alt="My Professional Headshot" width={500} height={300} className={styles.portfolioImage} />
-            </a>
-            <div className={styles.projectDetails}>
-              <p className={styles.projectName}>Derrick Phan's Website</p>
-              <p className={styles.projectDescription}>Come learn about me and my experiences by viewing my Website!</p>
-              <a href="/">Link to Website</a>
-            </div>
-          </div>
-
-          <div className={styles.project}>
-            <a href="/">
-              <Image src="/images/playtranspare_logo.jpeg" alt="Transpare Logo" width={500} height={300} className={styles.portfolioImage} />
-            </a>
-            <div className={styles.projectDetails}>
-              <p className={styles.projectName}>Transpare.io</p>
-              <p className={styles.projectDescription}>Transpare.io is an online gaming platform that supports a wide variety of online games and live sports tracking.</p>
-              <a href="https://www.linkedin.com/company/playtranspare/posts/?feedView=all">Transpare LinkedIn</a>
-            </div>
-          </div>
-
-          <div className={styles.project}>
-            <a href="/">
-              <Image src="/images/poly.jpg" alt="Polymaps Picture" width={500} height={300} className={styles.portfolioImage} />
-            </a>
-            <div className={styles.projectDetails}>
-              <p className={styles.projectName}>Polymaps</p>
-              <p className={styles.projectDescription}>Polymaps is an app that displays all 400+ clubs at Cal Poly, aimed to help students get integrated with campus life.</p>
-            </div>
-          </div>
+        <div id="portfolio-container" className="flex flex-wrap justify-center gap-5">
+          {projects && projects.length > 0 ? (
+            projects.map((project) => (
+              <PortfolioPreview
+                key={project._id}
+                name={project.name}
+                description={project.description}
+                image={project.image}
+                imageAlt={project.imageAlt}
+                link={project.link}
+              />
+            ))
+          ) : (
+            <p className="text-center">No projects found. Please check back later!</p>
+          )}
         </div>
       </main>
+      <hr />
 
-      <footer className="footer text-center p-4 bg-gray-100">
-        © 2024 Derrick Phan | All Rights Reserved
-      </footer>
+      <footer className="footer">© 2024 Derrick Phan | All Rights Reserved</footer>
     </>
   );
 }
