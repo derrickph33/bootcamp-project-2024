@@ -41,9 +41,14 @@ const CommentPost: React.FC<CommentPostProps> = ({ slug, endpoint, isBlog, onCom
       setUser('');
       setComment('');
       onCommentAdded();
-    } catch (err: any) {
-      setError(err.message || 'An unexpected error occurred');
-      console.error('Error submitting comment:', err);
+    } catch (err: unknown) { 
+      if (err instanceof Error) { 
+        setError(err.message || 'An unexpected error occurred');
+        console.error('Error submitting comment:', err.message);
+      } else {
+        setError('An unexpected error occurred');
+        console.error('Unknown error:', err);
+      }
     } finally {
       setLoading(false);
     }

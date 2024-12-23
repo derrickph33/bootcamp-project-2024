@@ -5,10 +5,7 @@ import { useParams } from 'next/navigation';
 import styles from './blogPost.module.css';
 import Comment from '@/app/components/comment';
 import CommentPost from '@/app/components/commentPost';
-
-type Props = {
-  params: { slug: string };
-};
+import Image from 'next/image';
 
 type CommentType = {
   id: string;
@@ -34,49 +31,65 @@ const BlogPost = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchBlog = async () => {
-    if (!slug) {
-      setError('Invalid blog slug.');
-      setLoading(false);
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch(`/api/Blogs/${encodeURIComponent(slug)}`, {
-        cache: 'no-store',
-      });
-
-      if (!res.ok) {
-        throw new Error('Failed to fetch blog');
-      }
-
-      const data: BlogType = await res.json();
-
-      if (data.comments) {
-        data.comments = data.comments.map((c) => ({
-          ...c,
-          time: new Date(c.time),
-        }));
-      }
-
-      setBlog(data);
-    } catch (err: any) {
-      console.error(`Error fetching blog: ${err}`);
-      setError('Failed to load blog post.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    if (slug) {
-      fetchBlog();
-    }
+    const fetchBlog = async () => {
+      if (!slug) {
+        setError('Invalid blog slug.');
+        setLoading(false);
+        return;
+      }
+  
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(`/api/Blogs/${encodeURIComponent(slug)}`, {
+          cache: 'no-store',
+        });
+  
+        if (!res.ok) {
+          throw new Error('Failed to fetch blog');
+        }
+  
+        const data: BlogType = await res.json();
+  
+        if (data.comments) {
+          data.comments = data.comments.map((c) => ({
+            ...c,
+            time: new Date(c.time),
+          }));
+        }
+  
+        setBlog(data);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          console.error(`Error fetching blog: ${err.message}`);
+          setError('Failed to load blog post.');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchBlog();
   }, [slug]);
 
   const handleCommentAdded = () => {
+    const fetchBlog = async () => {
+      if (slug) {
+        try {
+          const res = await fetch(`/api/Blogs/${encodeURIComponent(slug)}`, {
+            cache: 'no-store',
+          });
+          if (res.ok) {
+            const data: BlogType = await res.json();
+            setBlog(data);
+          }
+        } catch (err) {
+          console.error('Failed to refresh comments:', err);
+        }
+      }
+    };
+
     fetchBlog();
   };
 
@@ -93,9 +106,11 @@ const BlogPost = () => {
       <main className={styles.mainContent}>
         <h1 className={styles.blogTitle}>{blog.title}</h1>
         <p className={styles.blogDate}>{blog.date}</p>
-        <img
+        <Image
           src={blog.image}
           alt={blog.imageAlt || 'Blog image'}
+          width={800}
+          height={450}
           className={styles.blogImage}
         />
         <div className={styles.blogContent}>

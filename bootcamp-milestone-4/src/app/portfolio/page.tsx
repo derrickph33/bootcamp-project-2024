@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import PortfolioPreview from "../components/portfolioPreview";
 import Comment from "../components/comment";
 import CommentPost from "../components/commentPost";
-import styles from "@/app/components/portfolioPreview.module.css"
+import Link from "next/link";
 
 type CommentType = {
   id: string;
@@ -53,9 +53,9 @@ export default function PortfolioPage() {
     <>
       <nav className="navbar">
         <h1 className="logo">
-          <a href="/" style={{ color: "white", textDecoration: "none" }}>
+          <Link href="/" style={{ color: "white", textDecoration: "none" }}>
             Back to Homepage
-          </a>
+          </Link>
         </h1>
       </nav>
 

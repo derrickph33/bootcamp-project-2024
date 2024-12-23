@@ -2,16 +2,18 @@ import React from 'react';
 import BlogPreview from '../components/blogPreview'; 
 import connectDB from '../database/db';
 import Blog from '../database/blogSchema';
+import Link from 'next/link';
 
 async function getBlogs(){
 	await connectDB() // function from db.ts before
 
 	try {
-			// query for all blogs and sort by date
+		// query for all blogs and sort by date
 	    const blogs = await Blog.find().sort({ date: -1 }).orFail()
-			// send a response as the blogs as the message
+		// send a response as the blogs as the message
 	    return blogs
 	} catch (err) {
+        console.error("Error fetching blogs:", err);
 	    return null
 	}
 }
@@ -23,7 +25,7 @@ export default async function BlogPage() {
       <>
           <nav className="navbar">
               <h1 className="logo">
-                  <a href="/" style={{ color: 'white', textDecoration: 'none' }}>Back to Homepage</a>
+                  <Link href="/" style={{ color: 'white', textDecoration: 'none' }}>Back to Homepage</Link>
               </h1>
           </nav>
 

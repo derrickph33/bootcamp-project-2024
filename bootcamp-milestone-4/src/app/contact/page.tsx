@@ -7,7 +7,6 @@ interface FormData {
   name: string;
   email: string;
   message: string;
-  [key: string]: any;
 }
 
 interface Status {
@@ -80,12 +79,12 @@ const ContactPage: React.FC = () => {
         });
         setFormData({ name: '', email: '', message: '' });
       })
-      .catch((err) => {
+      .catch((err: { message: string }) => {
         console.error('FAILED...', err);
         setStatus({
           loading: false,
           success: '',
-          error: 'Failed to send the message. Please try again later.',
+          error: err.message || 'Failed to send the message. Please try again later.',
         });
       });
   };

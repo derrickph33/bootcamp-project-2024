@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
   let body: Partial<Comment>;
   try {
     body = await req.json();
-  } catch (error) {
+  } catch {
     return NextResponse.json({ message: 'Invalid JSON' }, { status: 400 });
   }
 
@@ -41,15 +41,15 @@ export async function POST(req: NextRequest) {
   };
 
   try {
-    const updatedBlog = await blogSchema.findOneAndUpdate(
+    await blogSchema.findOneAndUpdate(
       { slug },
       { $push: { comments: newComment } },
       { new: true }
     ).orFail();
 
     return NextResponse.json({ message: 'Comment added successfully', comment: newComment }, { status: 201 });
-  } catch (error) {
-    console.error('Error adding comment:', error);
+  } catch (err) {
+    console.error('Error adding comment:', err);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }
