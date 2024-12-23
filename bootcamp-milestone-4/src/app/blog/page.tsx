@@ -31,7 +31,7 @@ export default async function BlogPage() {
 
           <main className="px-5 pt-2 pb-5">
               <h1 className="text-5xl font-bold text-center mb-3">Blogs</h1>
-              <h2 className="text-2xl text-center mb-5">Some of the things I've been up to recently!</h2>
+              <h2 className="text-2xl text-center mb-5">Some of the things I&apos;ve been up to recently!</h2>
               <div id="blog-container" className="flex flex-wrap justify-center gap-5">
                   {blogs && blogs.length > 0 ? (
                       blogs.map((blog) => (
