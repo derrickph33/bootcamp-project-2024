@@ -1,5 +1,6 @@
-.mainContent {
+  .mainContent {
     padding: 20px;
+    padding-bottom: 5rem;
     max-width: 800px;
     margin: 0 auto;
   }
@@ -30,3 +31,10 @@
     font-size: 1.1rem;
     line-height: 1.6;
   }
+
+  .commentsHeader {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem; 
+  } 

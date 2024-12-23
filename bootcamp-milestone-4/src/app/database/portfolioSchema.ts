@@ -1,5 +1,12 @@
 import mongoose, { Schema } from "mongoose";
 
+type IComment = {
+  id: string;
+  user: string;
+  comment: string;
+  time: Date;
+};
+
 // typescript type (can also be an interface)
 type Project = {
   name: string;
@@ -7,7 +14,15 @@ type Project = {
   image: string;
   imageAlt: string;
   link: string; 
+  comments: IComment[];
 };
+
+const commentSchema = new Schema<IComment>({
+  id: { type: String, required: true },
+  user: { type: String, required: true },
+  comment: { type: String, required: true },
+  time: { type: Date, required: true, default: Date.now },
+});
 
 // mongoose schema
 const portfolioSchema = new Schema<Project>({
@@ -15,7 +30,8 @@ const portfolioSchema = new Schema<Project>({
   description: { type: String, required: true },
   image: { type: String, required: true },
   imageAlt: { type: String, required: true },
-  link: { type: String, required: false }, // Not required
+  link: { type: String, required: false }, 
+  comments: { type: [commentSchema], default: [] },
 });
 
 // defining the collection and model

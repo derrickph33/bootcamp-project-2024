@@ -64,4 +64,11 @@
     color: #4B0082; 
     text-decoration: underline; 
   }
+
+  .commentsHeader {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem; 
+  } 
   

@@ -1,12 +1,12 @@
 import mongoose, { Schema } from "mongoose";
 
 type IComment = {
+    id: string;
     user: string;
     comment: string;
     time: Date;
   };
 
-// typescript type (can also be an interface)
 type Blog = {
 	title: string;
     date: string;

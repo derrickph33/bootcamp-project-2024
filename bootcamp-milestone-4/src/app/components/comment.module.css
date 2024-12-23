@@ -4,11 +4,13 @@
     padding: 10px;
     margin: 10px 0;
     background-color: #f9f9f9;
+    position: relative;
 }
   
 .commentUser {
     font-weight: bold;
     margin-bottom: 5px;
+    
 }
   
 .commentText {
@@ -20,5 +22,3 @@
     font-size: 0.875rem;
     color: gray;
 }
-  
-  
